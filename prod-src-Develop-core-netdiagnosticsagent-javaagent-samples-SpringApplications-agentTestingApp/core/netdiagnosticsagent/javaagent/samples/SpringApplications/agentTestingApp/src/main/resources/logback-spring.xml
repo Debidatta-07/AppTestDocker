@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include
+		resource="org/springframework/boot/logging/logback/base.xml" />
+	<logger name="com.cavisson" level="TRACE" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<turboFilter
+		class="ch.qos.logback.classic.turbo.DynamicThresholdFilter">
+		<Key>X_Cav_Log_Level</Key>
+		<DefaultThreshold>${LOG_LEVEL:-INFO}</DefaultThreshold>
+		<MDCValueLevelPair>
+			<value>ERROR</value>
+			<level>ERROR</level>
+		</MDCValueLevelPair>
+		<MDCValueLevelPair>
+			<value>WARN</value>
+			<level>WARN</level>
+		</MDCValueLevelPair>
+		<MDCValueLevelPair>
+			<value>DEBUG</value>
+			<level>DEBUG</level>
+		</MDCValueLevelPair>
+		<MDCValueLevelPair>
+			<value>TRACE</value>
+			<level>TRACE</level>
+		</MDCValueLevelPair>
+		<MDCValueLevelPair>
+			<value>ALL</value>
+			<level>ALL</level>
+		</MDCValueLevelPair>
+	</turboFilter>
+</configuration>
